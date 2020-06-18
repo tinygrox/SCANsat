@@ -1958,7 +1958,7 @@ namespace SCANsat.SCAN_Unity
             
 			if (altimetry)
 			{
-                infoString.Append(" Terrain Height: ");
+                infoString.Append(" " + Localizer.Format("#autoLOC_SCANsat_BigMapInfoTerrainHeight") + " ");//" Terrain Height: "
                 SCANuiUtil.getMouseOverElevation(infoString, lon, lat, data, 2, hires);
                 
 				if (hires)
@@ -1967,13 +1967,13 @@ namespace SCANsat.SCAN_Unity
 					double eqDistancePerDegree = circum / 360;
 					double degreeOffset = 5 / eqDistancePerDegree;
                     
-					infoString.AppendFormat(" Slope: {0}°", SCANUtil.slope(SCANUtil.getElevation(body, lon, lat), body, lon, lat, degreeOffset).ToString("F1"));
+					infoString.Append(" " + Localizer.Format("#autoLOC_SCANsat_BigMapInfoSlope", SCANUtil.slope(SCANUtil.getElevation(body, lon, lat), body, lon, lat, degreeOffset).ToString("F1")));//" Slope: {0}°"
 				}
 			}
             
 			if (SCANUtil.isCovered(lon, lat, data, SCANtype.Biome))
             {
-                infoString.Append(" Biome: ");
+				infoString.Append(" " + Localizer.Format("#autoLOC_SCANsat_BigMapInfoBiome") + " ");//Biome:
                 SCANUtil.getBiomeDisplayName(infoString, body, lon, lat);
             }
 
@@ -1998,7 +1998,7 @@ namespace SCANsat.SCAN_Unity
 			
 			infoString.AppendLine();
             SCANuiUtil.toDMS(infoString, lat, lon);
-			infoString.AppendFormat(" (lat: {0}° lon: {1}°)", lat.ToString("F2"), lon.ToString("F2"));
+			infoString.Append(" " + Localizer.Format("#autoLOC_SCANsat_BigMapInfoLatANDLon", lat.ToString("F2"), lon.ToString("F2")));//(lat: {0}° lon: {1}°)
             
 			double range = ContractDefs.Survey.MaximumTriggerRange;
             
@@ -2048,12 +2048,12 @@ namespace SCANsat.SCAN_Unity
 						{
 							if (a.Detail)
 							{
-								infoString.Append(" Anomaly: ");
+								infoString.Append(" " + Localizer.Format("#autoLOC_SCANsat_BigMapInfoAnomaly") + " ");//Anomaly:
 								infoString.Append(a.Name);
 							}
 							else
 							{
-								infoString.Append(" Anomaly: Unknown");
+								infoString.Append(" " + Localizer.Format("#autoLOC_SCANsat_BigMapInfoAnomaly_unknown"));//Anomaly: Unknown
 							}
 							break;
 						}
@@ -2069,7 +2069,7 @@ namespace SCANsat.SCAN_Unity
 
 					if (SCANUtil.mapLabelDistance(lat, lon, flag.latitude, flag.longitude, body) <= range)
 					{
-						infoString.Append(" Flag: ");
+						infoString.Append(" " + Localizer.Format("#autoLOC_SCANsat_BigMapInfoFlag") + " ");//Flag:
 						infoString.Append(flag.vesselName);
 						break;
 					}
