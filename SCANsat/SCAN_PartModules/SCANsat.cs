@@ -330,7 +330,7 @@ namespace SCANsat.SCAN_PartModules
         }
 
         /* SCAN: context (right click) buttons in EDTIOR */
-        [KSPEvent(guiActiveEditor = true, guiName = "Extend", active = true)]
+        [KSPEvent(guiActiveEditor = true, guiName = "#autoLOC_SCANsat_Extend", active = true)]
         public void editorExtend()
         {
             Events["editorExtend"].active = false;
@@ -338,7 +338,7 @@ namespace SCANsat.SCAN_PartModules
             animate(1, 0);
         }
 
-        [KSPEvent(guiActiveEditor = true, guiName = "Retract", active = false)]
+        [KSPEvent(guiActiveEditor = true, guiName = "#autoLOC_SCANsat_Retract", active = false)]
         public void editorRetract()
         {
             Events["editorExtend"].active = true;
