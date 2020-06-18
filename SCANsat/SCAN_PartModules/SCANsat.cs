@@ -246,7 +246,7 @@ namespace SCANsat.SCAN_PartModules
             if (max_alt != 0)
                 sb.Append(Localizer.Format("#autoLOC_SCANsat_AltitudeMax", (max_alt / 1000).ToString("F0")));
             if (fov != 0)
-                sb.Append(Localizer.Format("#autoLOC_SCANsat_FOV", fov.ToString("F1") + "°"));
+                sb.Append(Localizer.Format("#autoLOC_SCANsat_FOV", fov.ToString("F1") + "Â°"));
 
             sb.AppendLine();
 
@@ -477,7 +477,7 @@ namespace SCANsat.SCAN_PartModules
                 {
                     scanInfoFOV.guiActive = true;
                     scanInfoPower.guiActive = true;
-                    scanFOV = string.Format("{0}°", CurrentFOV(alt).ToString("N1"));
+                    scanFOV = string.Format("{0}Â°", CurrentFOV(alt).ToString("N1"));
 
                     if (requireLight && SCAN_Settings_Config.Instance.DaylightCheck)
                     {
@@ -509,7 +509,7 @@ namespace SCANsat.SCAN_PartModules
                 {
                     scanInfoFOV.guiActive = true;
                     scanInfoPower.guiActive = true;
-                    scanFOV = string.Format("{0}°", CurrentFOV(alt).ToString("N1"));
+                    scanFOV = string.Format("{0}Â°", CurrentFOV(alt).ToString("N1"));
                     if (requireLight && SCAN_Settings_Config.Instance.DaylightCheck)
                     {
                         scanInfoDaylight.guiActive = true;
