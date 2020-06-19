@@ -309,7 +309,7 @@ namespace SCANsat.SCAN_PartModules
         }
 
         /* SCAN: context (right click) buttons in FLIGHT */
-        [KSPEvent(guiActive = true, guiName = "Start RADAR Scan", active = true)]
+        [KSPEvent(guiActive = true, guiName = "#autoLOC_SCANsat_StartRADARScan", active = true)]//Start RADAR Scan
         public void startScan()
         {
             if (!ToolbarManager.ToolbarAvailable && SCANcontroller.controller != null)
@@ -321,7 +321,7 @@ namespace SCANsat.SCAN_PartModules
             animate(1, 0);
         }
 
-        [KSPEvent(guiActive = true, guiName = "Stop RADAR Scan", active = true, requireFullControl = false)]
+        [KSPEvent(guiActive = true, guiName = "#autoLOC_SCANsat_StopRADARScan", active = true, requireFullControl = false)]//Stop RADAR Scan
         public void stopScan()
         {
             unregisterScanner();
@@ -556,25 +556,25 @@ namespace SCANsat.SCAN_PartModules
 
             if ((sensorType & (short)SCANtype.AltimetryLoRes) != 0)
             {
-                sb.Append("Alt Lo");
+                sb.Append(Localizer.Format("#autoLOC_SCANsat_TypeAltLow"));//"Alt Lo"
             }
             if ((sensorType & (short)SCANtype.AltimetryHiRes) != 0)
             {
                 if (sb.Length > 0)
                     sb.Append(", ");
-                sb.Append("Alt Hi");
+                sb.Append(Localizer.Format("#autoLOC_SCANsat_TypeAltHigh"));//"Alt Hi"
             }
             if ((sensorType & (short)SCANtype.Biome) != 0)
             {
                 if (sb.Length > 0)
                     sb.Append(", ");
-                sb.Append("Biome");
+                sb.Append(Localizer.Format("#autoLOC_SCANsat_TypeBiome"));//"Biome"
             }
             if ((sensorType & (short)SCANtype.Anomaly) != 0)
             {
                 if (sb.Length > 0)
                     sb.Append(", ");
-                sb.Append("Anomaly");
+                sb.Append(Localizer.Format("#autoLOC_SCANsat_TypeAnomaly"));//"Anomaly"
             }
             if ((sensorType & (short)SCANtype.AnomalyDetail) != 0)
             {
@@ -586,13 +586,13 @@ namespace SCANsat.SCAN_PartModules
             {
                 if (sb.Length > 0)
                     sb.Append(", ");
-                sb.Append("Vis Lo");
+                sb.Append(Localizer.Format("#autoLOC_SCANsat_TypeVisualLow"));//"Vis Lo"
             }
             if ((sensorType & (short)SCANtype.VisualHiRes) != 0)
             {
                 if (sb.Length > 0)
                     sb.Append(", ");
-                sb.Append("Vis Hi");
+                sb.Append(Localizer.Format("#autoLOC_SCANsat_TypeVisualHigh"));//"Vis Hi"
             }
             if ((sensorType & (short)SCANtype.ResourceLoRes) != 0)
             {
@@ -617,7 +617,7 @@ namespace SCANsat.SCAN_PartModules
             if (ba >= max_alt)
                 return string.Format("{0} - {1}km", (min_alt / 1000).ToString("N0"), (ba / 1000).ToString("N0"));
             else
-                return string.Format("{0} - {1}km: > {2}km Ideal", (min_alt / 1000).ToString("N0"), (max_alt / 1000).ToString("N0"), (ba / 1000).ToString("N0"));
+                return string.Format("{0} - {1}km: > {2}km " + Localizer.Format("#autoLOC_SCANsat_Ideal"), (min_alt / 1000).ToString("N0"), (max_alt / 1000).ToString("N0"), (ba / 1000).ToString("N0"));//Ideal
         }
 
         private string getECString()
